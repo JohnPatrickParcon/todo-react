@@ -29,13 +29,17 @@ function App() {
   }
 
   function RenderTodo(){
+    if(todoList.length < 1){
+      return null
+    }
+
     return(
       <ul className="grid w-1/2 bg-purple-600 rounded-2xl mt-2 p-1 overflow-y-auto">
         {
           todoList.map(item => {
             return(
-              <li className='w-full wrap-anywhere p-1 flex place-content-between' key={item.id}>
-              {item.todoItem}
+              <li className='w-full wrap-anywhere p-1 flex place-content-between hover:bg-purple-700 hover:rounded-2xl' key={item.id}>
+              <p>{item.todoItem}</p>
               <button className="bg-red-400 rounded-2xl p-1 hover:bg-red-500" onClick={() => {removeTodo(item.id)}}>Delete</button>
               </li>
             )
